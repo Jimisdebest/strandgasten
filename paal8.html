@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solliciteren | Strandtent Paal 8</title>
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Importeer lettertype -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- KLEURSTELLINGEN --- */
+        :root {
+            --background: #e3e2df; 
+            --text-dark: #5d5c5b;  
+            --accent-gold: #e8c886; 
+            --white: #ffffff;
+        }
+
+        /* --- ALGEMENE STIJL --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--background);
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            position: relative;
+        }
+
+        /* --- HEADER --- */
+        .top-label {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-weight: 900;
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            margin-bottom: 30px;
+        }
+
+        /* --- TEKST --- */
+        .intro-text {
+            font-family: 'Merriweather', serif;
+            font-weight: 300;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #777; 
+        }
+
+        .details-text {
+            font-family: 'Merriweather', serif;
+            font-weight: 300;
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            color: #777;
+        }
+
+        /* --- FORMULIER --- */
+        .form-group { margin-bottom: 15px; }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: var(--white);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 5px rgba(232, 200, 134, 0.3);
+        }
+
+        .submit-btn {
+            background-color: var(--accent-gold);
+            color: var(--text-dark);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.2s;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover { background-color: #d4b570; }
+
+        /* --- FOOTER / LOGO --- */
+        .footer-section {
+            margin-top: 40px;
+            display: flex;
+            justify-content: flex-end; /* Logo rechts uitgelijnd */
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding-top: 20px;
+        }
+
+        .logo-wrapper {
+            text-align: right;
+        }
+
+        .logo-wrapper img {
+            max-height: 80px;
+            width: auto;
+        }
+
+        /* --- MOBIEL --- */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .intro-text, .details-text { font-size: 1.1rem; }
+            .footer-section { justify-content: flex-start; }
+            .logo-wrapper img { max-height: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="top-label">Strandtent Paal 8</div>
+        <h1>Personeel gezocht</h1>
+        <div class="divider"></div>
+
+        <!-- Vacature tekst -->
+        <p class="intro-text">Afwassers met ervaring gezocht</p>
+        <p class="details-text">Elke dag, van 6 uur 's ochtends tot 8 's avonds</p>
+
+        <!-- Sollicitatie Formulier -->
+        <form action="#" method="post">
+            <div class="form-group">
+                <input type="text" id="naam" name="naam" placeholder="Uw volledige naam" required>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="E-mailadres" required>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" id="telefoon" name="telefoon" placeholder="Telefoonnummer">
+            </div>
+
+            <div class="form-group">
+                <textarea id="ervaring" name="ervaring" rows="2" placeholder="Vertel kort over uw ervaring (optioneel)"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Solliciteer</button>
+        </form>
+
+        <!-- Footer alleen met Logo -->
+        <div class="footer-section">
+            <div class="logo-wrapper">
+                <img src="logo.png" alt="Strandtent Paal 8 Logo">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
