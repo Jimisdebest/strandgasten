@@ -4,47 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RTV Stoorzender - Kijk Live</title>
-
     <style>
+        /* Algemene reset en achtergrond */
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #d9d9d9;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #d9d9d9; 
+            color: #666666;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* Container om alles te centreren */
         .container {
             max-width: 600px;
             width: 90%;
-            margin: 0 auto;
-            padding: 40px;
             text-align: left;
+            position: relative;
+            padding: 40px;
+            box-sizing: border-box;
         }
 
+        /* Top sectie met logo en titel */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            margin-bottom: 10px;
         }
 
         .logo-text {
-            font-family: 'Courier New', monospace;
+            font-family: 'Courier New', Courier, monospace;
             font-size: 14px;
-            color: #e9dbb2;
+            color: #e9dbb2; 
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .logo-img {
             width: 80px;
+            height: auto;
         }
 
+        /* Hoofdtitel "Kijk nu:" */
         .main-title {
             font-family: 'Times New Roman', serif;
             font-size: 3rem;
-            color: #555;
+            color: #555555;
+            margin-top: 0;
             margin-bottom: 10px;
+            font-weight: normal;
         }
 
+        /* Lijn onder de titel */
         .divider {
             width: 100%;
             height: 2px;
@@ -53,17 +69,23 @@
             margin: 20px 0;
         }
 
+        /* Subtitel en tekst */
         .sub-title {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             font-size: 1.8rem;
-            color: #777;
+            color: #777777;
             margin-bottom: 5px;
+            font-weight: 300;
         }
 
         .description {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             font-size: 1rem;
-            color: #777;
+            color: #777777;
+            font-weight: 300;
         }
 
+        /* Footer met tekst en de KNOP */
         .footer {
             margin-top: 100px;
             display: flex;
@@ -72,23 +94,27 @@
         }
 
         .footer-text {
-            font-family: 'Courier New', monospace;
+            font-family: 'Courier New', Courier, monospace;
             font-size: 12px;
-            color: #888;
+            color: #888888;
+            line-height: 1.4;
             text-transform: uppercase;
         }
 
+        /* De KIJK LIVE knop */
         .live-button {
-            background-color: #000;
-            color: #fff;
+            background-color: #000000;
+            color: #ffffff;
             border: none;
             padding: 15px 25px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             font-weight: bold;
             font-size: 14px;
             text-transform: uppercase;
             cursor: pointer;
+            transition: all 0.2s ease;
             border-radius: 4px;
-            transition: 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .live-button:hover {
@@ -96,67 +122,83 @@
             background-color: #333;
         }
 
-        /* FULLSCREEN VIDEO */
+        .live-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Video container - initieel verborgen */
         .video-container {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            margin-top: 30px;
+            width: 100%;
             background: #000;
-            z-index: 9999;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .video-container video {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            display: block;
         }
+
     </style>
 </head>
-
 <body>
 
 <div class="container">
-
+    
+    <!-- Header met Logo -->
     <div class="header">
         <div class="logo-text">RTV STOORZENDER</div>
-        <img src="RTV-Stoorzender-Logo.png" class="logo-img">
+        <img src="RTV-Stoorzender-Logo.png" alt="Logo" class="logo-img">
     </div>
 
+    <!-- Hoofd Titel -->
     <h1 class="main-title">Kijk nu:</h1>
     <hr class="divider">
 
+    <!-- Subtitel -->
     <h2 class="sub-title">RTV Stoorzender</h2>
     <p class="description">Alles wat er op het strand gebeurt</p>
 
+    <!-- Footer sectie -->
     <div class="footer">
         <div class="footer-text">
             KIJK LIVE<br>
-            <span style="opacity:0.5; font-weight:bold;">(druk op de knop)</span>
+            <span style="font-weight:bold; opacity:0.5;">(druk op de knop)</span>
         </div>
 
+        <!-- Alleen de KIJK LIVE Knop -->
         <button class="live-button" onclick="startVideo()">▶ KIJK LIVE</button>
+    </div>
+
+    <!-- Video container -->
+    <div id="videoContainer" class="video-container">
+        <video id="myVideo" controls autoplay>
+            <source src="stoorzender.mp4" type="video/mp4">
+            Stoorzender gedetecteerd... Afbevolen...
+        </video>
     </div>
 
 </div>
 
-<!-- FULLSCREEN VIDEO -->
-<div id="videoContainer" class="video-container">
-    <video id="myVideo" loop>
-        <source src="stoorzender.mp4" type="video/mp4">
-    </video>
-</div>
-
 <script>
-function startVideo() {
-    var container = document.getElementById("videoContainer");
-    var video = document.getElementById("myVideo");
+    function startVideo() {
+        var container = document.getElementById("videoContainer");
+        var video = document.getElementById("myVideo");
 
-    container.style.display = "block";
-    video.play();
-}
+        // Toon de container
+        container.style.display = "block";
+
+        // Probeer video af te spelen
+        video.play().catch(function(error) {
+            console.log("Autoplay geblokkeerd door browser, klik nogmaals.");
+        });
+
+        // Scroll naar de video
+        container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 </script>
 
 </body>
